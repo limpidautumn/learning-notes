@@ -1,10 +1,5 @@
 # OpenAI Whisper 部署记录
-
-```powershell
-# 安装并启动 WSL 发行版
-wsl --install -d Debian --name whisper
-wsl -d whisper
-```
+[GitHub](https://github.com/openai/whisper)
 
 ```bash
 cd ~
