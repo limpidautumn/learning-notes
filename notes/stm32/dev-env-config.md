@@ -5,6 +5,9 @@ STM32CubeMX + VSCode
 
 **思路：STM32CubeMX 生成环境，VSCode 编译烧录。**
 
+## 系统
+Windows / Linux
+
 ## 下载和安装 STM32CubeMX
 [官网](https://www.st.com/en/development-tools/stm32cubemx.html)
 
