@@ -4,6 +4,21 @@
 
 ## 外设
 
+### 磁盘
+#### 挂载物理硬盘
+先在 `Disk Management` 中 `offline`，再挂载到 Hyper-V 虚拟机中的 `SCSI Controller`。
+
+#### 创建差分 VHDX 磁盘
+在 File Explorer 中，将父 VHDX 设置为只读。
+
+方法一：Hyper-V Manager 中，新建 Hard Disk，Disk Type 选择 Differencing。
+
+方法二：PowerShell 命令。
+```powershell
+New-VHD -Path "C:\path\to\child.vhdx" -ParentPath "C:\path\to\parent.vhdx" -Differencing
+Mount-VHD -Path "C:\path\to\child.vhdx" # 挂载差分磁盘
+```
+
 ### Network Adapters / Virtual Switch
 [视频](https://www.bilibili.com/video/BV1uQ4y1V77E/) | [Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)
 
