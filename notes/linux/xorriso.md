@@ -23,7 +23,10 @@ sudo xorriso -outdev /dev/sr0 -add ./file -- -commit -eject all # 添加到根�
 ### 读数据
 ```bash
 xorriso -indev /dev/sr0 -ls /disc/path # 列出目录内容
-sudo xorriso -indev /dev/sr0 -outdev /path/to/output.iso -commit -eject all # 输出为 iso 镜像
+xorriso -indev /dev/sr0 -outdev /path/to/output.iso -commit -eject all # 输出为 iso 镜像
+xorriso -indev /dev/sr0 -check_media data_to=/path/to/output.iso -- -eject # 扫描坏块并输出位 iso 镜像
+xorriso -dev /path/to/input.iso -osirrox on -extract / /path/to/output/dir -end # 将 ISO 文件中的全部内容提取到本地目录
+xorriso -indev /dev/sr0 -osirrox on -extract /path/to/input.txt /path/to/output.txt -eject # 将特定文件提取到本地目录
 ```
 
 ## 杂项

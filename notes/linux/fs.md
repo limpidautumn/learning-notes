@@ -54,6 +54,18 @@ sudo umount /dev/sdX1 # 指定设备名
 
 ```
 
+### 磁盘扩容
+磁盘物理空间被扩展，分区表和文件系统需要同步扩展。
+
+以 GPT + ext4 单分区 为例：
+```bash
+sudo fdisk -l /dev/sdX # 检查最新磁盘信息
+sudo sgdisk -e /dev/sdX # 修复分区表
+df -Th /mnt/TEMP_VHD # 确认文件系统类型
+sudo resize2fs /dev/sdc1 # 扩展文件系统
+df -h /mnt/TEMP_VHD # 验证结果
+```
+
 ### TRIM
 触发存储设备执行空间回收，有助于提升 SSD 性能或减少宿主机的磁盘占用。
 ```bash
