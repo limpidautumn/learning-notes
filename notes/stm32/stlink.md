@@ -32,8 +32,6 @@ Failure starting GDB server: TCP port 61234 not available.
 **解决方法**：对于 Windows 系统，任务管理器中找到进程 `ST-LINK_gdbserver.exe`，终止后重试。对于 Linux 系统，使用 `lsof -i :PORT` 命令查看占用进程，再使用 `kill PID` 终止。
 
 ## 相关工具
-[STM32 ST-LINK utility](https://www.st.com/en/development-tools/stsw-link004.html)
-
-
+[STM32 ST-LINK utility](https://www.st.com/en/development-tools/stsw-link004.html) `sudo apt install stlink-tools`
 
 
