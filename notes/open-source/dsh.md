@@ -4,7 +4,7 @@
 
 ### 安装
 ```bash
-sudo npm install -g @deepseek-ai/dsh
+npm install -g @deepseek-ai/dsh
 ```
 
 ### 开机自启
@@ -61,7 +61,7 @@ After=network-online.target
 Type=oneshot
 Environment=PATH=/path/to/node/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ExecStartPre=-/bin/systemctl stop dsh-web.service
-ExecStart=npm update -g @deepseek-ai/dsh
+ExecStart=/path/to/npm update -g @deepseek-ai/dsh
 ExecStartPost=-/bin/systemctl start dsh-web.service
 ```
 
