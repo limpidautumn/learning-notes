@@ -20,7 +20,7 @@ ssh-copy-id -i ~/.ssh/id_xxx.pub [user@]host[:port]
 
 ```bash
 mkdir -p ~/.ssh/
-sudo vim ~/.ssh/authorized_keys
+vim ~/.ssh/authorized_keys
 ```
 
 格式：`[options] keytype key comment`，注释用 `#`。
