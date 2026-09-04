@@ -24,7 +24,8 @@ docker version
 ## 镜像
 ```bash
 docker pull debian:latest # 拉取镜像
-docker images # 查看本地已有的镜像
+docker image ls # 查看本地已有的镜像
+docker image rm IMAGE # 删除镜像
 ```
 
 ## 容器
@@ -70,6 +71,23 @@ docker rm -f CONTAINER # 强制删除正在运行的容器
 
 docker cp CONTAINER:SRC_PATH DEST_PATH
 docker cp SRC_PATH CONTAINER:DEST_PATH
+```
+
+## 数据卷
+```bash
+docker volume ls
+docker inspect VOLUME
+docker volume create VOLUME
+docker volume rm VOLUME
+```
+
+## 清理
+```bash
+docker system df # 查看 Docker 磁盘空间占用情况
+docker image prune -a # 清理未被容器使用的镜像
+docker container prune # 清理已停止的容器
+docker volume prune # 清理未使用的卷
+docker builder prune -a # 清理构建缓存
 ```
 
 ## 示例

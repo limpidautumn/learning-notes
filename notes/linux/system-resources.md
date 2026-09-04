@@ -1,5 +1,9 @@
 # 系统资源监控
 
+```bash
+sudo apt install sysstat # mpstat, iostat, pidstat
+```
+
 ## CPU
 ```bash
 mpstat -P ALL # CPU 各核心使用情况

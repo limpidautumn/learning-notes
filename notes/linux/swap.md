@@ -6,8 +6,8 @@ free -h
 swapon --show
 ```
 
-## 创建 swap 文件
-
+## swap 文件
+### 创建
 ```bash
 sudo fallocate -l 2G /swapfile # 创建 swap 文件
 sudo chmod 600 /swapfile
@@ -21,7 +21,16 @@ sudo mkswap /swapfile # 格式化为 swap
 
 重启后生效。
 
-### 创建 swap 分区
+### 扩展
+```bash
+sudo swapoff /swapfile
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+## swap 分区
 ```bash
 sudo mkswap /dev/sdXn
 sudo blkid /dev/sdXn # 查看 UUID
