@@ -11,3 +11,14 @@ Linux
 unzip SetupSTM32CubeMX-xxx.zip
 sudo ./SetupSTM32CubeMX-xxx
 ```
+
+手动创建 [`.desktop` 文件](../../notes/linux/desktop.md)：
+```ini
+[Desktop Entry]
+Type=Application
+Name=STM32CubeMX
+Exec=/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/STM32CubeMX
+Icon=/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/help/STM32CubeMX.png
+Terminal=false
+Categories=Development;
+```
