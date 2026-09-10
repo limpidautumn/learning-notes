@@ -1,6 +1,6 @@
 # DeepSeek Harness
 
-## 配置
+## 本机配置（不安全，已弃用）
 
 ### 安装
 ```bash
