@@ -75,10 +75,10 @@ AllowTcpForwarding yes
 
 ### 本地端口转发
 ```bash
-ssh -L port_2:127.0.0.1:port_1 user@host
+ssh -N -L port_2:127.0.0.1:port_1 user@host
 ```
 
-将服务器上的 port_1 端口转发到本机的 port_2 端口。
+将服务器上的 port_1 端口转发到本机的 port_2 端口，常配合 `-N` (不执行远程命令) 使用。
 
 VSCode 上的 `Remote - SSH` 插件自带该功能。入口位于 Status Bar。
 

@@ -121,3 +121,11 @@ dsh plugin --profile web add @linxin666/dsh-client-ui-skin-center
 # DeepSeek-Balance-Whale-Widget from dsh-market by MeteorNOX
 
 ```
+
+## 杂项
+### API Key 验证 (DeepSeek)
+用于检查某个 DeepSeek API Key 是否有效。
+```bash
+TOKEN="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+curl -fsS -H "Authorization: Bearer $TOKEN" https://api.deepseek.com/models
+```

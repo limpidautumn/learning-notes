@@ -4,6 +4,11 @@
 
 选择 `LTS` for `Linux` using `nvm`。
 
+## 版本管理
+```bash
+nvm install-latest-npm # 更新 npm
+```
+
 ## 常见问题
 
 ### JavaScript heap out of memory

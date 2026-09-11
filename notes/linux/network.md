@@ -49,3 +49,33 @@ sudo netplan apply
 ```
 
 ## 链路层
+
+### 网桥
+#### 终端命令（未验证）
+假设 `eno1` 为原网卡，DHCP。将其作为桥端口，使用 `nmcli` 创建网桥 `br0`。
+
+```bash
+# 查看当前连接
+nmcli con show
+nmcli dev status
+
+# 创建网桥
+sudo nmcli con add type bridge con-name br0 ifname br0 \
+  ipv4.method auto bridge.stp no
+
+# 把 eno1 作为 br0 的从属
+sudo nmcli con add type bridge-slave con-name eno1-br ifname eno1 master br0
+
+# 禁止旧连接自动连接并断开
+sudo nmcli con mod "Wired connection 1" connection.autoconnect no
+sudo nmcli con down "Wired connection 1"
+
+# 启用网桥
+sudo nmcli con up br0
+
+# 验证成功后再删除旧连接
+sudo nmcli con delete "Wired connection 1"
+```
+
+#### 图形化界面 (KDE Plasma)
+TODO.
