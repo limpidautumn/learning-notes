@@ -91,8 +91,10 @@ sudo resize2fs /dev/sdc1 # 扩展文件系统
 df -h /mnt/TEMP_VHD # 验证结果
 ```
 
+<!-- 主流操作系统都有定期 TRIM
 ### TRIM
 触发存储设备执行空间回收，有助于提升 SSD 性能或减少宿主机的磁盘占用。
 ```bash
 sudo fstrim -av # 手动触发 discard
 ```
+-->

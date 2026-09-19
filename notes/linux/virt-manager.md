@@ -8,9 +8,24 @@ sudo apt update && sudo apt install virtiofsd
 
 在 virt-manager 中，打开对应 VM。
 
+#### 添加
 Vitural Hardware Details > Add Hardware > Filesystem
 
 Driver: virtiofs
+
+#### 配置缓存策略
+```diff
+ <filesystem type="mount" accessmode="passthrough">
+   <driver type="virtiofs"/>
++  <binary path="/usr/libexec/virtiofsd" xattr="on">
++    <cache mode="never"/>
++    <!-- or <cache mode="none"/> -->
++  </binary>
+   <source dir="/path/to/share"/>
+   <target dir="mount_tag"/>
+   <address ... />
+ </filesystem>
+```
 
 ### 挂载
 进入 Guest。

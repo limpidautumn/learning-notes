@@ -14,3 +14,17 @@ sudo bash -c 'echo "$HOME"' # 输出：/root
 | 转义字符 `\` | 失去特殊意义 | 保留特殊性 |
 | 包含引号本身 (二级性质) | 不能通过 `\'` 包含 | 可以用 `\"` 包含 |
 
+### 命令前缀赋值
+```bash
+VAR="abc" echo $VAR # 输出：(空)
+VAR="abc"; echo $VAR # 输出：abc
+```
+
+## 用法
+### 后台进程
+
+```bash
+# nohup: 忽略 SIGNUP 信号，让命令在退出终端后仍然继续运行
+nohup COMMAND &
+nohup COMMAND > LOGFILE 2>&1 &
+```

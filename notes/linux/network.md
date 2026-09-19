@@ -1,18 +1,51 @@
 # 网络
 
-## 应用层
+## 静态 IP 地址
+切到 DHCP，看当前配置：
+- 查看连接状态：`ip addr show`，记下网卡名。
+- 查看网关：`ip route`，记下网关。它是紧跟在 `via` 后面的那个地址。
 
-## 传输层
+假设：
+- 目标网卡是 `eth0`
+- 所在网段是 `192.168.1.0/24`
+- 网关是 `192.168.1.1`
 
-## 网络层
+需要先确认是谁在管理网络。
 
-### 静态 IP 地址
-
-#### Netplan (Ubuntu 18.04+)
-1. 查看网卡名称
+### ifupdown
+1. 条件
 ```bash
-ip a
-# 或 ifconfig
+systemctl status networking # Active
+```
+
+2. 配置
+```bash
+sudo cp /etc/network/interfaces{,.bak}
+sudo vim /etc/network/interfaces
+```
+
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    dns-nameservers 192.168.1.1
+```
+
+3. 应用
+```bash
+sudo ifdown eth0
+sudo ifup eth0
+ip a # 检查
+```
+
+### Netplan (Ubuntu 18.04+)
+1. 条件
+```bash
+sudo netplan status --all # 查看 Netplan 状态
 ```
 
 2. 配置 Netplan
@@ -47,11 +80,12 @@ sudo chmod 600 /etc/netplan/01-netcfg.yaml # 修改权限
 ```bash
 sudo netplan apply
 ```
+### 其它方法
+- systemd-networkd
+- nmcli
 
-## 链路层
-
-### 网桥
-#### 终端命令（未验证）
+## 网桥
+### 终端命令（未验证）
 假设 `eno1` 为原网卡，DHCP。将其作为桥端口，使用 `nmcli` 创建网桥 `br0`。
 
 ```bash
@@ -77,5 +111,5 @@ sudo nmcli con up br0
 sudo nmcli con delete "Wired connection 1"
 ```
 
-#### 图形化界面 (KDE Plasma)
+### 图形化界面 (KDE Plasma)
 TODO.

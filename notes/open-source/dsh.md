@@ -24,7 +24,7 @@ After=network-online.target
 Type=simple
 User=current-user
 Environment=PATH=/path/to/node/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ExecStart=/path/to/dsh web
+ExecStart=/path/to/dsh --profile web --no-open
 Restart=on-failure
 RestartSec=5
 
