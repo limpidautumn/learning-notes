@@ -2,7 +2,7 @@
 
 Linux
 
-[User Manual](https://www.st.com/resource/en/user_manual/dm00104712-stm32cubemx-for-stm32-configuration-and-initialization-c-code-generation-stmicroelectronics.pdf)
+[UM1718: STM32CubeMX for STM32 configuration and initialization C code generation - STMicroelectronics](https://www.st.com/resource/en/user_manual/um1718-stm32cubemx-for-stm32-configuration-and-initialization-c-code-generation-stmicroelectronics.pdf)
 
 ## 安装
 

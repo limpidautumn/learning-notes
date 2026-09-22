@@ -1,11 +1,29 @@
 # DeepSeek Harness
 
-## 本机配置（不安全，已弃用）
+## 本机配置
 
 ### 安装
 ```bash
 npm install -g @deepseek-ai/dsh
+
+vim ~/.config/systemd/user/dsh-web.service
 ```
+
+```ini
+[Unit]
+Description=DeepSeek Harness Web Profile
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=PATH=/path/to/node/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/path/to/dsh --profile web --no-open
+Restart=on-failure
+RestartSec=5
+```
+
+<!--
 
 ### 开机自启
 ```bash
@@ -91,6 +109,8 @@ sudo systemctl enable --now dsh-update.timer
 ```bash
 sudo systemctl start dsh-update.service
 ```
+
+-->
 
 ## 插件
 

@@ -19,9 +19,9 @@ Project Manager > Code Generator > Generated files > [x] Generate peripheral ini
 ```c
 // DMA 发送
 HAL_I2C_Master_Receive_DMA(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
-void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c);
+__weak void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {}
 
 // DMA 接收
 HAL_I2C_Master_Transmit_DMA(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
-void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c);
+__weak void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c) {}
 ```
