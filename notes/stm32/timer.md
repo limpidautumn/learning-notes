@@ -15,6 +15,8 @@
 ### 定时器更新中断
 如需每 $m$ 个脉冲触发一次中断 $(m \le 65536)$，则设置 自动重装载寄存器(TIMx_ARR) 为 $m-1$。
 
+计数器 CNT 的循环是：0,1,2,...,ARR
+
 ### 影子寄存器
 默认关闭。
 - 关闭时，若在运行过程中调整 自动重装载寄存器 的值，可能会错过重装载。
@@ -46,40 +48,54 @@ stm32f103c8xx 系列没有基本定时器，使用通用定时器演示。
 5. 定时器更新中断：`Configuration > NVIC Settings > TIM4 global interrupt`
 
 ## 通用定时器 General-purpose timer
-TIM2 - TIM4
+STM32F103: TIM2 - TIM4
 
-[Reference Manual > 15 General-purpose timers (TIM2 to TIM5) - STMicroelectronics](https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+[RM0008 §15 General-purpose timers (TIM2 to TIM5) - STMicroelectronics](https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 
 <div align="center">
   <img src="assets/rm0008/figure_100.svg" alt="General-purpose timer block diagram" width="70%">
 </div>
 
 ### 输入
-#### CK_CNT
-CK_PSC -> TIMx_PSC -> CK_CNT
+CEN=1. CK_PSC -> TIMx_PSC -> CK_CNT
 
-- **Internal clock**  
-  TIMx_CLK/CK_INT -> CK_PSC (SMS=000)
-- **External clock mode 1 (TI1/TI2)**  
+- **Internal clock** (src=CK_INT): SMS∉{001, 010, 011, 111}, ECE=0.  
+  TIMx_CLK/CK_INT -> CK_PSC  
+- **Slave mode controller**: SMS≠000.  
   TIMx_CH1 -> TI1 -> 输入滤波 & 边沿检测(上升/下降) -> TI1FP1 -> TRGI (TS=101)  
   TIMx_CH2 -> TI2 -> 输入滤波 & 边沿检测(上升/下降) -> TI2FP2 -> TRGI (TS=110)  
   TIMx_CH1 -> TI1 -> 输入滤波 & 边沿检测(双边) -> TI1F_ED -> TRGI (TS=100)  
   ETRF -> TRGI (ECE=0, TS=111)  
-  TRGI -> Slave mode controller (SMS=111) -> CK_PSC
-- **External clock mode 2 (ETR)**  
+  - **External clock mode 1** (src=TRGI): SMS=111, TS=1xx, ECE=0.  
+    TRGI -> Slave mode controller -> CK_PSC  
+  - **Reset mode**: SMS=100.  
+  - **Gated mode**: SMS=101, TS≠100.  
+  - **Trigger mode**: SMS=110.  
+- **External clock mode 2** (src=ETRF): ECE=1.  
   TIMx_ETR -> 极性选择(上升/下降) & 预分频 & 输入滤波 -> ETRF  
-  ETRF -> CK_PSC (ECE=1)
-- **Internal trigger clock (ITRx)**  
-  ITRx -> TRGI (TS=0xx) -> Slave mode controller (SMS=111) -> CK_PSC
+  ETRF -> CK_PSC (ECE=1)  
+- **Internal trigger clock** (src=TRGI/ITRx): SMS=111, TS=0xx, ECE=0.  
+  ITRx -> TRGI (TS=0xx) -> Slave mode controller -> CK_PSC (SMS=111)  
 
+#### ETR
+ETRP ≤ CK_INT/4.
+
+#### Slave Mode
+- **Reset mode**: rising edge of the selected trigger input (TRGI) reinitializes the counter and generates an update of the registers.
+- **Gated mode**: the counter clock is enabled when TRGI is high. The counter stops (but is not reset) as soon as the trigger becomes low. Both counter start and stop are controlled.
+- **Trigger mode**: the counter starts at a rising edge of the trigger TRGI (but it is not reset). Only the counter start is controlled.
+- **External clock mode 1**: rising edges of the selected trigger TRGI clock the counter.
+- **Combined reset + trigger mode**: Not available.
+
+#### Input Filter
 数字滤波: ICxF(TIx), ETF(ETR).
 
 按 f<sub>SAMPLING</sub> 采样，N 个连续采样一致才确认跳变。
 
 | ICxF/ETF | f<sub>SAMPLING</sub> | N |
 | :--: | :--: | :--: |
-| 0000 | f<sub>CK_INT</sub> | 1 |
-| 0011 | f<sub>CK_INT</sub> | 8 |
+| 0000 | f<sub>DTS</sub> | 1 |
+| ⋮ | ⋮ | ⋮ |
 | 1111 | f<sub>DTS</sub>/32 | 8 |
 
 | CKD | t<sub>DTS</sub> | Note |
@@ -99,16 +115,6 @@ CK_PSC -> TIMx_PSC -> CK_CNT
 #### Configuration 区域
 
 <!--
-
-根据指示阅读资料，并回答问题。
-
-资料：
-1. an4013-introduction-to-timers-for-stm32-mcus-stmicroelectronics.pdf, rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf 中关于 STM32F103C8 系列芯片通用定时器的部分内容
-2. um1718-stm32cubemx-for-stm32-configuration-and-initialization-c-code-generation-stmicroelectronics.pdf 中关于通用定时器配置方法的部分内容
-
-问题：
-1. STM32F103C8 芯片的 TIM2 与 TIM3, TIM4 之间有什么不同？
-2. 向我讲解 STM32CubeMX 中的配置各自有什么作用，及各选项的含义。
 Mode
 Slave Mode: Disable, External Clock Mode 1, Reset Mode, Gated Mode, Trigger Mode
 Trigger Source: Disable, ITR0, ITR1, ITR2, ITR3, TR1_ED, TI1FP1, TI2FP2
@@ -160,15 +166,6 @@ Configuration (Clock Source = ETR2)
     Clock Filter (4 bits value): 0
     Clock Polarity: non inverted, Inverted
     Clock Prescaler: Prescaler not used, Capture performed once every 2/4/8 events
-
-3. 检查笔记内容是否准确全面。
-
-<笔记内容>
-
-注意：
-1. 不要阅读文档中的图片内容。如特殊情况下必须阅读，请先转换为 svg 矢量图而非位图。
-2. 你得出的结论需要从资料文本内容出发。
-
 -->
 
 <!--
