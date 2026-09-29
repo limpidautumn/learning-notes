@@ -87,6 +87,8 @@ ETRP ≤ CK_INT/4.
 - **External clock mode 1**: rising edges of the selected trigger TRGI clock the counter.
 - **Combined reset + trigger mode**: Not available.
 
+**TIMx_SR.TIF**: This flag is set by hardware on trigger event (active edge detected on TRGI input when the slave mode controller is enabled in all modes but gated mode, both edges in case gated mode is selected). It is cleared by software.
+
 #### Input Filter
 数字滤波: ICxF(TIx), ETF(ETR).
 
@@ -104,6 +106,20 @@ ETRP ≤ CK_INT/4.
 | 01 | 2×t<sub>CK_INT</sub> | Division by 2 |
 | 10 | 4×t<sub>CK_INT</sub> | Division by 4 |
 
+### 输入捕获 Input Capture
+> **In Input capture mode, the Capture/Compare registers (TIMx_CCRx) are used to latch the value of the counter after a transition detected by the corresponding ICx signal.** When a capture occurs, the corresponding CCXIF flag (TIMx_SR register) is set and an interrupt or a DMA request can be sent if they are enabled. If a capture occurs while the CCxIF flag was already high, then the over-capture flag CCxOF (TIMx_SR register) is set. CCxIF can be cleared by software by writing it to 0 or by reading the captured data stored in the TIMx_CCRx register. CCxOF is cleared when written to 0.
+
+TIMxCHx -> TIx -> TIxFPx
+
+| TIMx_CCMRx</br>.CCxS[1:0] | Description in CubeMX | ? -> ICx</br><small>{x,y}∈{{1,2},{3,4}}</small> |
+| :--: | :--: | :--: |
+| 00 | / | / |
+| 01 | Input Capture direct mode | TIxFPx |
+| 10 | Input Capture indirect mode | TIyFPx |
+| 11 | Input Capture tirggered by TRC | TRC |
+
+ICx -> ICxPS -> CCRx
+
 ### STM32CubeMX 配置
 位置：`Pinout & Configuration > Timers > TIMx`
 
@@ -111,8 +127,25 @@ ETRP ≤ CK_INT/4.
 - `Slave Mode`：从模式控制器，对应 `TIMx_SMCR.SMS[2:0]`。
 - `Trigger Source`：TRGI 输入触发选择，对应 `TIMx_SMCR.TS[2:0]`。
 - `Clock Source`：计数器时钟源。调整为 `ETR2` 则启用外部时钟模式 2，并置 `TIMx_SMCR.ECE=1`。
+- `Channelx`：通道方向与输入选择，对应 `TIMx_CCMRx.CCxS`。
 
 #### Configuration 区域
+略
+
+### HAL 库用法
+```cpp
+// 定时器基础计时
+
+if (__HAL_TIM_GET_FLAG(*htim, TIM_FLAG_TRIGGER)) {
+  __HAL_TIM_CLEAR_FLAG(*htim, TIM_FLAG_TRIGGER);
+  // 触发中断标志位 TIMx_SR.TIF
+}
+
+HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动定时器指定通道的输入捕获功能
+HAL_StatusTypeDef HAL_TIM_IC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动，并使能对应通道的捕获中断
+uint32_t HAL_TIM_ReadCapturedValue(const TIM_HandleTypeDef* htim, uint32_t Channel); // 读取定时器指定通道 CCRx 的值
+__weak void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {} // 定时器输入捕获回调函数
+```
 
 <!--
 Mode
