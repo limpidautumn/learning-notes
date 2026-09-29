@@ -22,20 +22,6 @@
 - 关闭时，若在运行过程中调整 自动重装载寄存器 的值，可能会错过重装载。
 - 开启后，预分频寄存器 及 自动重装载寄存器 的变更会在下个计数周期生效。
 
-### HAL 库用法
-```cpp
-HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim); // 启用定时器基础计时功能
-HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim); // 启用定时器基础计时功能，并使能更定时器新中断
-
-__weak void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {} // 定时器更新中断回调函数
-
-#define __HAL_TIM_GET_COUNTER(__HANDLE__) // 获取当前计数值
-#define __HAL_TIM_SET_COUNTER(__HANDLE__, __COUNTER__) // 设置当前计数值
-#define __HAL_TIM_GET_AUTORELOAD(__HANDLE__) // 获取自动重装载值
-#define __HAL_TIM_SET_AUTORELOAD(__HANDLE__, __AUTORELOAD__) // 设置自动重装载值
-#define __HAL_TIM_SET_PRESCALER(__HANDLE__, __PRESC__) // 设置预分频值
-```
-
 ### CubeMX 配置
 stm32f103c8xx 系列没有基本定时器，使用通用定时器演示。
 
@@ -106,19 +92,69 @@ ETRP ≤ CK_INT/4.
 | 01 | 2×t<sub>CK_INT</sub> | Division by 2 |
 | 10 | 4×t<sub>CK_INT</sub> | Division by 4 |
 
-### 输入捕获 Input Capture
+### 输入捕获模式 Input capture mode
 > **In Input capture mode, the Capture/Compare registers (TIMx_CCRx) are used to latch the value of the counter after a transition detected by the corresponding ICx signal.** When a capture occurs, the corresponding CCXIF flag (TIMx_SR register) is set and an interrupt or a DMA request can be sent if they are enabled. If a capture occurs while the CCxIF flag was already high, then the over-capture flag CCxOF (TIMx_SR register) is set. CCxIF can be cleared by software by writing it to 0 or by reading the captured data stored in the TIMx_CCRx register. CCxOF is cleared when written to 0.
+
+ICx 出现特定边沿时，记录当前计数值，触发中断。
 
 TIMxCHx -> TIx -> TIxFPx
 
 | TIMx_CCMRx</br>.CCxS[1:0] | Description in CubeMX | ? -> ICx</br><small>{x,y}∈{{1,2},{3,4}}</small> |
-| :--: | :--: | :--: |
+| :--: | :--- | :--- |
 | 00 | / | / |
 | 01 | Input Capture direct mode | TIxFPx |
 | 10 | Input Capture indirect mode | TIyFPx |
 | 11 | Input Capture tirggered by TRC | TRC |
 
-ICx -> ICxPS -> CCRx
+ICx -> ICxPS -> CCRx (CCxP)
+
+### 输出比较模式 Output compare mode
+
+> When a match is found between the capture/compare register and the counter, the output compare function:
+> - Assigns the corresponding output pin to a programmable value defined by the output compare mode (OCxM bits in the TIMx_CCMRx register) and the output polarity (CCxP bit in the TIMx_CCER register). The output pin can keep its level (OCXM=000), be set active (OCxM=001), be set inactive (OCxM=010) or can toggle (OCxM=011) on match.
+> - Sets a flag in the interrupt status register.
+> - Generates an interrupt if the corresponding interrupt mask is set.
+> - Sends a DMA request if the corresponding enable bit is set.
+> 
+> The TIMx_CCRx registers can be programmed with or without preload registers using the OCxPE bit in the TIMx_CCMRx register.
+
+计数值匹配时，配置 OCx 输出 (有效/无效/翻转)。
+
+TIMx_CCRx -> OCxREF (OCxM)
+
+> **RM0008 §15.4.7 §15.4.8 TIMx_CCMRx.OCxM**: Output compare x mode
+> 
+> These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits.
+
+| TIMx_CCMRx</br>.OCxM[2:0] | Mode | Description |
+| :--: | :--- | :--- |
+| 000 | Frozen | The comparison between TIMx_CCRx and TIMx_CNT has no effect on the outputs. |
+| 001 | Active Level on match | OCxREF is forced high when TIMx_CNT=TIMx_CCRx. |
+| 010 | Inactive Level on match | OCxREF is forced low when TIMx_CNT=TIMx_CCRx. |
+| 011 | Toggle on match | OC1REF toggles when TIMx_CNT=TIMx_CCR1 |
+| 100 | Forced Active | OC1REF is forced high. |
+| 101 | Forced Inactive | OC1REF is forced low. |
+
+OCxREF -> OCx (CCxP)  
+OCx -> TIMx_CHx
+
+### PWM 模式
+
+| TIMx_CCMRx</br>.OCxM[2:0] | Mode | Description |
+| :--: | :--- | :--- |
+| 110 | PWM mode 1 | In upcounting, channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive. In downcounting, channel 1 is inactive as long as TIMx_CNT>TIMx_CCR1 else active. |
+| 111 | PWM mode 2 | In upcounting, channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else active. In downcounting, channel 1 is active as long as TIMx_CNT>TIMx_CCR1 else inactive. |
+
+### 输入捕获模式 & 输出比较模式 & PWM 模式 极性选择
+> **RM0008 §15.4.9 TIMx_CCER.CCxP**: Capture/Compare x output polarity
+> 
+> - CCx channel configured as output:
+>   - 0: OCx active high.
+>   - 1: OCx active low.
+> - CCx channel configured as input:  
+>   This bit selects whether $\textsf{ICx}$ or $\overline{\textsf{ICx}}$ is used for trigger or capture operations.
+>   - 0: non-inverted: capture is done on a **rising edge** of ICx. When used as external trigger, ICx is non-inverted.
+>   - 1: inverted: capture is done on a **falling edge** of ICx. When used as external trigger, ICx is inverted.
 
 ### STM32CubeMX 配置
 位置：`Pinout & Configuration > Timers > TIMx`
@@ -134,17 +170,38 @@ ICx -> ICxPS -> CCRx
 
 ### HAL 库用法
 ```cpp
-// 定时器基础计时
+// 基础定时
+HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim); // 启用定时器基础计时功能
+HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim); // 启用定时器基础计时功能，并使能更定时器新中断
 
+#define __HAL_TIM_GET_COUNTER(__HANDLE__) // 获取当前计数值
+#define __HAL_TIM_SET_COUNTER(__HANDLE__, __COUNTER__) // 设置当前计数值
+#define __HAL_TIM_GET_AUTORELOAD(__HANDLE__) // 获取自动重装载值
+#define __HAL_TIM_SET_AUTORELOAD(__HANDLE__, __AUTORELOAD__) // 设置自动重装载值
+#define __HAL_TIM_SET_PRESCALER(__HANDLE__, __PRESC__) // 设置预分频值
+
+__weak void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {} // 定时器更新中断回调函数
+
+// 从模式
 if (__HAL_TIM_GET_FLAG(*htim, TIM_FLAG_TRIGGER)) {
   __HAL_TIM_CLEAR_FLAG(*htim, TIM_FLAG_TRIGGER);
   // 触发中断标志位 TIMx_SR.TIF
 }
 
-HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动定时器指定通道的输入捕获功能
-HAL_StatusTypeDef HAL_TIM_IC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动，并使能对应通道的捕获中断
-uint32_t HAL_TIM_ReadCapturedValue(const TIM_HandleTypeDef* htim, uint32_t Channel); // 读取定时器指定通道 CCRx 的值
-__weak void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {} // 定时器输入捕获回调函数
+// 通道
+
+// Channel = TIM_CHANNEL_x
+HAL_StatusTypeDef HAL_TIM_IC_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动输入捕获功能
+HAL_StatusTypeDef HAL_TIM_IC_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动输入捕获功能，并使能捕获中断
+HAL_StatusTypeDef HAL_TIM_OC_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动输出比较
+HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启动 PWM
+#define __HAL_TIM_SET_COMPARE(__HANDLE__, __CHANNEL__, __COMPARE__) // 设置 CCRx 值
+#define __HAL_TIM_GET_COMPARE(__HANDLE__, __CHANNEL__) // 读取 CCRx 值
+
+// Channel = HAL_TIM_ACTIVE_CHANNEL_x
+uint32_t HAL_TIM_ReadCapturedValue(const TIM_HandleTypeDef* htim, uint32_t Channel); // 读取 CCRx 值
+
+__weak void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {} // 输入捕获回调函数
 ```
 
 <!--
