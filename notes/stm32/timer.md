@@ -1,5 +1,9 @@
 # 定时器
 
+以 **STM32F103C8T6** 芯片为例。
+
+个人学习笔记，不保证正确。请以 ST 手册上的内容为准。
+
 <!--
 [AN4013: Introduction to timers for STM32 MCUs - STMicroelectronics](https://www.st.com/resource/en/application_note/an4013-introduction-to-timers-for-stm32-mcus-stmicroelectronics.pdf)
 -->
@@ -57,6 +61,7 @@ CEN=1. CK_PSC -> TIMx_PSC -> CK_CNT
   - **Reset mode**: SMS=100.  
   - **Gated mode**: SMS=101, TS≠100.  
   - **Trigger mode**: SMS=110.  
+  - **Encoder mode x**: SMS=0xx.  
 - **External clock mode 2** (src=ETRF): ECE=1.  
   TIMx_ETR -> 极性选择(上升/下降) & 预分频 & 输入滤波 -> ETRF  
   ETRF -> CK_PSC (ECE=1)  
@@ -145,7 +150,17 @@ OCx -> TIMx_CHx
 | 110 | PWM mode 1 | In upcounting, channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive. In downcounting, channel 1 is inactive as long as TIMx_CNT>TIMx_CCR1 else active. |
 | 111 | PWM mode 2 | In upcounting, channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else active. In downcounting, channel 1 is active as long as TIMx_CNT>TIMx_CCR1 else inactive. |
 
+### 编码器模式 Encoder interface mode
+
+| TIMx_SMCR</br>.SMS[2:0] | Mode | CubeMX |
+| :--: | :--- | :--- |
+| 001 | Encoder Mode 1 | ... TI1 |
+| 001 | Encoder Mode 2 | ... TI2 |
+| 001 | Encoder Mode 3 | ... TI1 and TI2 |
+
 ### 输入捕获模式 & 输出比较模式 & PWM 模式 极性选择
+输入捕获模式, 输出比较模式, PWM 模式, 编码器模式.
+
 > **RM0008 §15.4.9 TIMx_CCER.CCxP**: Capture/Compare x output polarity
 > 
 > - CCx channel configured as output:
@@ -164,6 +179,7 @@ OCx -> TIMx_CHx
 - `Trigger Source`：TRGI 输入触发选择，对应 `TIMx_SMCR.TS[2:0]`。
 - `Clock Source`：计数器时钟源。调整为 `ETR2` 则启用外部时钟模式 2，并置 `TIMx_SMCR.ECE=1`。
 - `Channelx`：通道方向与输入选择，对应 `TIMx_CCMRx.CCxS`。
+- `Combined Channels`：多通道联动模式，写一些寄存器。
 
 #### Configuration 区域
 略
@@ -187,6 +203,7 @@ if (__HAL_TIM_GET_FLAG(*htim, TIM_FLAG_TRIGGER)) {
   __HAL_TIM_CLEAR_FLAG(*htim, TIM_FLAG_TRIGGER);
   // 触发中断标志位 TIMx_SR.TIF
 }
+HAL_StatusTypeDef HAL_TIM_Encoder_Start(TIM_HandleTypeDef *htim, uint32_t Channel); // 启用编码器
 
 // 通道
 
