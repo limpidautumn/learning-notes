@@ -61,7 +61,7 @@ CEN=1. CK_PSC -> TIMx_PSC -> CK_CNT
   - **Reset mode**: SMS=100.  
   - **Gated mode**: SMS=101, TS≠100.  
   - **Trigger mode**: SMS=110.  
-  - **Encoder mode x**: SMS=0xx.  
+  - **Encoder mode x**: SMS∈{001, 010, 011}.  
 - **External clock mode 2** (src=ETRF): ECE=1.  
   TIMx_ETR -> 极性选择(上升/下降) & 预分频 & 输入滤波 -> ETRF  
   ETRF -> CK_PSC (ECE=1)  
@@ -155,8 +155,8 @@ OCx -> TIMx_CHx
 | TIMx_SMCR</br>.SMS[2:0] | Mode | CubeMX |
 | :--: | :--- | :--- |
 | 001 | Encoder Mode 1 | ... TI1 |
-| 001 | Encoder Mode 2 | ... TI2 |
-| 001 | Encoder Mode 3 | ... TI1 and TI2 |
+| 010 | Encoder Mode 2 | ... TI2 |
+| 011 | Encoder Mode 3 | ... TI1 and TI2 |
 
 ### 输入捕获模式 & 输出比较模式 & PWM 模式 极性选择
 输入捕获模式, 输出比较模式, PWM 模式, 编码器模式.
