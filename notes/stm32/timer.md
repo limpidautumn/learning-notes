@@ -43,7 +43,7 @@ STM32F103: TIM2 - TIM4
 [RM0008 §15 General-purpose timers (TIM2 to TIM5) - STMicroelectronics](https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 
 <div align="center">
-  <img src="assets/rm0008/figure_100.svg" alt="General-purpose timer block diagram" width="70%">
+  <img src="assets/rm0008_rev21/figure_100.svg" alt="RM0008 Rev 21 Figure 100. General-purpose timer block diagram" width="70%">
 </div>
 
 ### 输入

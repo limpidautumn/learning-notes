@@ -13,9 +13,15 @@
 3. PCLK2：位于 APB2 上；
 4. FCLK：与 HCLK 同步，用于休眠时的中断采样。
 
-APB1 / APB2 上连接的具体外设参考 [数据手册](https://www.st.com/resource/en/datasheet/stm32f103c8.pdf) 上的系统框架图。
+<div align="center">
+  <img src="assets/ds5319_rev20/figure_1.svg" alt="DS5319 Rev 20 Figure 1. STM32F103xx performance line block diagram" width="70%">
+</div>
 
 ## 时钟树
 描述从时钟源开始，经过倍频、分频、选择开关等环节，最终供给 CPU 内核、存储器、外设和总线的完整路径。
 
-手动调整：`HCLK`, `APB1/APB2 Prescaler`.
+<div align="center">
+  <img src="assets/rm0008_rev21/figure_8.svg" alt="RM0008 Rev 21 Figure 8. Clock tree" width="70%">
+</div>
+
+CubeMX 中手动调整：`HCLK`, `APB1/APB2 Prescaler`.
