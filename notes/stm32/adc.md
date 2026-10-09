@@ -42,6 +42,18 @@
 
 <!-- 注：如果 VREF- 可用（取决于封装），则必须将其连接到 VSSA。 -->
 
+<div align="center">
+  <img src="assets/ds5319_rev20/page_74.svg" alt="DS5319 Rev 20 Page 74" width="70%">
+</div>
+
+## SAR
+
+$$
+t_\textsf{CONV} = t_\textsf{S} + 12.5 \cdot \frac{1}{f_\textsf{ADC}}
+$$
+
+t<sub>CONV</sub> = t<sub>S</sub> + 12.5
+
 ## Single conversion mode
 
 单次转换模式：ADC 执行一次转换。
@@ -135,23 +147,77 @@ ADC_CR2:CONT=1, 其余同 Single conversion mode.
 
 ## 温度传感器
 
-TODO
+内置的温度传感器，可测量芯片结温。
+
+温度传感器输出电压与温度呈线性关联，以 STM32F103C8T6 为例 (典型值)：
+
+$$
+U(t)=1430\,\mathrm{mV} - 4.3\,\mathrm{mV}/^\circ\mathrm{C} \cdot (t - 25\,{}^\circ\mathrm{C})
+$$
+
+通过输出电压反解温度：
+
+$$
+t=\frac{1430\,\mathrm{mV} - U(t)}{4.3\,\mathrm{mV}/^\circ\mathrm{C}} + 25\,{}^\circ\mathrm{C}
+$$
+
+采样时间 ≥ 17.1 μs.
+
+> **RM0008 Rev 21 §11.10 Temperature sensor**
+> 
+> ... The temperature sensor output voltage changes linearly with temperature. ... The internal temperature sensor is more suited to applications that detect **temperature variations** instead of absolute temperatures. ...
+> 
+> **Reading the temperature**
+> 
+> To use the sensor:
+> 1. Select the ADCx_IN16 input channel.
+> 2. Select a sample time of 17.1 μs
+> 3. Set the TSVREFE bit in the ADC control register 2 (ADC_CR2) to wake up the temperature sensor from power down mode.
+> 4. Start the ADC conversion by setting the ADON bit (or by external trigger).
+> 5. Read the resulting V<sub>SENSE</sub> data in the ADC data register
+> 6. Obtain the temperature using the following formula:
+> 
+> Temperature (in °C) = {(V<sub>25</sub> - V<sub>SENSE</sub>) / Avg_Slope} + 25.  
+> Where,  
+> V<sub>25</sub> = V<sub>SENSE</sub> value for 25° C and  
+> Avg_Slope = Average Slope for curve between Temperature vs. V<sub>SENSE</sub> (given in mV/° C or μV/ °C).  
+> Refer to the Electrical characteristics section for the actual values of V<sub>25</sub> and Avg_Slope.
+> 
+> Note: The sensor has a startup time after waking from power down mode before it can output V<sub>SENSE</sub> at the correct level. The ADC also has a startup time after power-on, so to minimize the delay, the ADON and TSVREFE bits should be set at the same time.
+
+
+> **DS5319 Rev 20 §5.3.19 Temperature sensor characteristics**
+> 
+> Table 51. TS characteristics
+> 
+> | Symbol | Parameter | Min | Typ | Max | Unit |
+> | :--: | :--- | :--: | :--: | :--: | :--: |
+> | T<sub>L</sub><sup>(1)</sup> | V<sub>SENSE</sub> linearity with temperature | - | ±1 | ±2 | °C |
+> | Avg_Slope<sup>(1)</sup> | Average Slope | 4.0 | 4.3 | 4.6 | mV/°C |
+> | V<sub>25</sub><sup>(1)</sup> | Voltage at 25°C | 1.34 | 1.43 | 1.52 | V |
+> | t<sub>START</sub><sup>(2)</sup> | Startup time | 4 | - | 10 | μs |
+> | T<sub>S_TEMP</sub><sup>(3)(2)</sup> | ADC sampling time when reading the temperature | - | - | 17.1 | μs |
+> 
+> 1. Evaluated by characterization, not tested in production, unless otherwise specified.
+> 2. Specified by design, not tested in production.
+> 3. Shortest sampling time can be determined in the application by multiple iterations.
 
 ## 嵌入式基准电压
 
-V<sub>REFINT</sub> = 1.20V, 采样时间 ≤ 17.1 μs
+V<sub>REFINT</sub> = 1.20V (典型值), 采样时间 ≥ 17.1 μs.
 
 > **DS5319 Rev 20 §5.3.4 Embedded reference voltage**
+> 
 > The parameters given in Table 12 are derived from tests performed under ambient temperature and VDD supply voltage conditions summarized in Table 9.
 > 
 > Table 12. Embedded internal reference voltage
 > | Symbol | Parameter | Conditions | Min | Typ | Max | Unit |
 > | :--: | :--- | :--: | :--: | :--: | :--: | :--: |
-> | V<sub>REFINT</sub> | Internal reference voltage | -40℃<T<sub>A</sub><+105℃ | 1.16 | 1.20 | 1.26 | V |
-> | V<sub>REFINT</sub> | Internal reference voltage | -40℃<T<sub>A</sub><+85℃ | 1.16 | 1.20 | 1.24 | V |
+> | V<sub>REFINT</sub> | Internal reference voltage | -40°C<T<sub>A</sub><+105°C | 1.16 | 1.20 | 1.26 | V |
+> | V<sub>REFINT</sub> | Internal reference voltage | -40°C<T<sub>A</sub><+85°C | 1.16 | 1.20 | 1.24 | V |
 > | T<sub>S_vrefint</sub><sup>(1)</sup> | ADC sampling time when reading the internal reference voltage | - | - | 5.1 | 17.1<sup>(2)</sup> | μs |
 > | V<sub>REFINT</sub><sup>(2)</sup> | Internal reference voltage spread over the temperature range | V<sub>DD</sub>=3V±10mV | - | - | 10 | mV |
-> | T<sub>Coeff</sub><sup>(2)</sup> | Temperature coefficient | - | - | - | 100 | ppm/℃ |
+> | T<sub>Coeff</sub><sup>(2)</sup> | Temperature coefficient | - | - | - | 100 | ppm/°C |
 > 1. Shortest sampling time can be determined in the application by multiple iterations.
 > 2. Specified by design, not tested in production.
 

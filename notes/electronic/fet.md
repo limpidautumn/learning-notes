@@ -12,7 +12,7 @@
 
 等效模型：受 $V_{GS}$ 控制的 $R_{DS}$。
 
-![Equivalent Model](./img/fet-p03-eq_model.png)
+![Equivalent Model](./assets/img/fet-p03-eq_model.png)
 
 - $V_{GS} = V_G - V_S$
 - $R_{DS\text{(on)}}$：MOS 管导通时，D 与 S 之间的电阻。MOS 管越贵，值一般越小。
@@ -24,15 +24,15 @@
 
 ### NMOS
 
-![NMOS (zh)](./img/fet-p01-nmos-zh.png)
-![NMOS (en)](./img/fet-p02-nmos-en.png)
-![NMOS Chart](./img/fet-p07-pmos-chart.png)
+![NMOS (zh)](./assets/img/fet-p01-nmos-zh.png)
+![NMOS (en)](./assets/img/fet-p02-nmos-en.png)
+![NMOS Chart](./assets/img/fet-p07-pmos-chart.png)
 
 ### PMOS
 
-![PMOS Symbol (zh)](./img/fet-p05-pmos-zh.png)
-![PMOS Symbol (en)](./img/fet-p06-pmos-en.png)
-![PMOS Chart](./img/fet-p07-pmos-chart.png)
+![PMOS Symbol (zh)](./assets/img/fet-p05-pmos-zh.png)
+![PMOS Symbol (en)](./assets/img/fet-p06-pmos-en.png)
+![PMOS Chart](./assets/img/fet-p07-pmos-chart.png)
 
 ### 用法
 源极连电源轨，漏极连元件，栅极串联电阻连 GPIO。
