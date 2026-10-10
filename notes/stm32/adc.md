@@ -1,6 +1,6 @@
 # ADC
 
-以 **STM32F103C8T6** 芯片为例。
+以 **STM32F103C8T6** 芯片为例, 主要记录 Regular group.
 
 个人学习笔记，不保证正确。请以 ST 手册上的内容为准。
 
@@ -52,7 +52,41 @@ $$
 t_\textsf{CONV} = t_\textsf{S} + 12.5 \cdot \frac{1}{f_\textsf{ADC}}
 $$
 
-t<sub>CONV</sub> = t<sub>S</sub> + 12.5
+$t_\textsf{S}$ 采样; $\frac{12.5}{f_\textsf{ADC}}$ 保持, 逐位逼近. 原理见 [SAR ADC](../electronic/adc.md#sar).
+
+> **AN2834 Rev 10 §2.1 SAR ADC internal structure**
+> 
+> The ADC embedded in STM32 microcontrollers uses the SAR (successive approximation register) principle, by which the conversion is performed in several steps. The number of conversion steps is equal to the number of bits in the ADC converter. Each step is driven by the ADC clock. Each ADC clock produces one bit from result to output. The ADC internal design is based on the switched-capacitor technique.
+
+## ADC on-off control
+置 ADC_CR2:ADON=1
+
+相关寄存器: [ADC_CR2.ADON](#adc_cr2adon).
+
+## ADC clock
+PCLK2 (APB2 clock) -> ADC Prescaler -> ADCCLK
+
+最高 14MHz.
+
+## Channel selection
+
+16 个复用通道, 分规则组 (regular group) 和注入组 (injected group), 通道顺序任意.
+
+- 规则组 ≤ 16, 顺序由 ADC_SQRx 选择.  
+- 注入组 ≤ 4, 顺序由 ADC_JSQR 选择.`
+
+若在转换期间修改 ADC_SQRx 或 ADC_JSQR, 则当前转换复位, 并 (由硬件) 向 ADC 发送新的启动脉冲.
+
+相关寄存器: [ADC_SQR1.L](#adc_sqr1l), [ADC_SQRx.SQx](#adc_sqrxsqx), ADC_JSQR.JL, ADC_JSQR.JSQx.
+
+> **RM0008 Rev 21 §11.3.3 Channel selection**
+> 
+> There are 16 multiplexed channels. It is possible to organize the conversions in two groups: regular and injected. A group consists of a sequence of conversions which can be done on any channel and in any order. ...
+> 
+> - The regular group is composed of up to 16 conversions. The regular channels and their order in the conversion sequence must be selected in the ADC_SQRx registers. The total number of conversions in the regular group must be written in the L[3:0] bits in the ADC_SQR1 register.
+> - The injected group is composed of up to 4 conversions. The injected channels and their order in the conversion sequence must be selected in the ADC_JSQR register. The total number of conversions in the injected group must be written in the L[1:0] bits in the ADC_JSQR register.
+> 
+> If the ADC_SQRx or ADC_JSQR registers are modified during a conversion, the current conversion is reset and a new start pulse is sent to the ADC to convert the new chosen group.
 
 ## Single conversion mode
 
@@ -118,6 +152,8 @@ ADC_CR2:CONT=1, 其余同 Single conversion mode.
 - 注入通道 (injected):
   - 序列寄存器为 ADC_JSQR;
   - 数据存储在 ADC_JDRx 中.
+
+相关寄存器: ADC_CR1.SCAN, [ADC_SMPRx.SMPx](#adc_smprxsmpx), [ADC_SQR1.L](#adc_sqr1l), [ADC_SQRx.SQx](#adc_sqrxsqx), ADC_JSQR.JL, ADC_JSQR.JSQx.
 
 > **RM0008 Rev 21 §11.3.8 Scan mode**
 > 
@@ -221,6 +257,9 @@ V<sub>REFINT</sub> = 1.20V (典型值), 采样时间 ≥ 17.1 μs.
 > 1. Shortest sampling time can be determined in the application by multiple iterations.
 > 2. Specified by design, not tested in production.
 
+## DMA
+TODO.
+
 ## 寄存器
 ### ADC_SR.EOC
 读 ADC_DR 时，硬件自动清零；也可由软件清零。
@@ -235,6 +274,76 @@ V<sub>REFINT</sub> = 1.20V (典型值), 采样时间 ≥ 17.1 μs.
 > 1: Conversion complete
 
 HAL 库中，`HAL_ADC_IRQHandler` 对 EOC 进行了软件清零。
+
+### ADC_CR2.ADON
+
+由软件控制:
+- 原为 0 时, 写 1: 唤醒 ADC.
+- 已为 1 时, 写 1: 启动一次转换.
+- 写 0: 停止并进入 power down.
+
+> **RM0008 Rev 21 §11.12.3 ADC control register 2 (ADC_CR2)**
+> 
+> Bit 0 ADON: A/D converter ON / OFF
+> 
+> This bit is set and cleared by software. If this bit holds a value of zero and a 1 is written to it then it wakes up the ADC from Power Down state.
+> 
+> Conversion starts when this bit holds a value of 1 and a 1 is written to it. The application should allow a delay of tSTAB between power up and start of conversion. Refer to Figure 23.
+> 
+> 0: Disable ADC conversion/calibration and go to power down mode.  
+> 1: Enable ADC and to start conversion.
+> 
+> Note: If any other bit in this register apart from ADON is changed at the same time, then conversion is not triggered. This is to prevent triggering an erroneous conversion.
+
+### ADC_SMPRx.SMPx
+
+逐通道采样时间.
+
+> **RM0008 Rev 21 §11.12.4 ADC sample time register 1 (ADC_SMPR1)**
+> 
+> Bits 23:0 SMPx[2:0]: Channel x Sample time selection
+> 
+> These bits are written by software to select the sample time individually for each channel. During sample cycles channel selection bits must remain unchanged.
+> 
+> 000: 1.5 cycles  
+> 001: 7.5 cycles  
+> 010: 13.5 cycles  
+> 011: 28.5 cycles  
+> 100: 41.5 cycles  
+> 101: 55.5 cycles  
+> 110: 71.5 cycles  
+> 111: 239.5 cycles
+> 
+> Note:  
+> ADC1 analog inputs Channel16 and Channel17 are internally connected to the temperature sensor and to VREFINT, respectively.  
+> ADC2 analog inputs Channel16 and Channel17 are internally connected to VSS.  
+> ADC3 analog inputs Channel9, Channel14, Channel15, Channel16 and Channel17 are connected
+> to VSS.
+
+### ADC_SQR1.L
+
+规则组 (regular group) 扫描序列长度.
+
+> **RM0008 Rev 21 §11.12.9 ADC regular sequence register 1 (ADC_SQR1)**
+> 
+> Bits 23:20 **L**[3:0]: Regular channel sequence length
+> 
+> These bits are written by software to define the total number of conversions in the regular channel conversion sequence.
+> 
+> 0000: 1 conversion  
+> 0001: 2 conversions  
+> ...  
+> 1111: 16 conversions
+
+### ADC_SQRx.SQx
+
+规则组 (regular group) 扫描序列.
+
+> **RM0008 Rev 21 §11.12.9 ADC regular sequence register 1 (ADC_SQR1)**
+> 
+> Bits 19:15 **SQ16**[4:0]: 16th conversion in regular sequence
+> 
+> These bits are written by software with the channel number (0..17) assigned as the 16th in the conversion sequence.
 
 ## CubeMX 配置
 
@@ -253,29 +362,38 @@ Analog > ADCx > ADCx Mode and Configuration
     - ADCs_Common_Settings
       - Mode: Independent mode / Dual combined regular simultaneous + injected simultaneous mode / Dual regular simultaneous + alternate trigger mode / Dual combined injected simultaneous + fast interleaved mode (delay between ADC sampling phases: 7 ADC clock cycles) / Dual combined injected simultaneous + slow interleaved mode (delay between ADC sampling phases: 14 ADC clock cycles) / Dual injected simultaneous mode only / Dual regular simultaneous mode only / Dual fast interleaved mode only (delay between ADC sampling phases: 7 ADC clock cycles) / Dual slow interleaved mode only (delay between ADC sampling phases: 14 ADC clock cycles) / Dual alternate trigger mode only
     - ADC_Settings
-      - Data Alignment: Right alignment / Left alignment
-      - Scan Conversion Mode: Disabled / Enabled
-      - Continous Conversion Mode: Disabled / Enabled
+      - Data Alignment: Right alignment / Left alignment  -> ADC_CR2.ALIGN
+      - Scan Conversion Mode: Disabled / Enabled  -> ADC_CR1.SCAN
+      - Continous Conversion Mode: Disabled / Enabled  -> ADC_CR2.CONT
       - Discontinous Conversion Mode: Disabled / Enabled
     - ADC_Regular_ConversionMode
       - Enable Regular Conversions: Enable / Disable
-      - Number Of Conversion: x
+      - Number Of Conversion: x  -> ADC_SQR1.L[3:0]
       - External Trigger Conversion Source: Regular Conversion launched by software / Timer x Capture Compare x event / Timer x Trigger Out event / EXTI Line x
       - Rank x
-        - Channel: Channel x
-        - Sampling Time: x Cycles
+        - Channel: Channel x  -> ADC_SQRx.SQx[4:0]
+        - Sampling Time: x Cycles  -> ADC_SMPRx.SMPx[2:0]
     - ADC_Injected_ConversionMode
       - Enable Injected Conversions: Disable / Enable
-      - Number Of Conversion: x
+      - Number Of Conversion: x  -> ADC_JSQR.JL[1Q:0]
       - External Trigger Conversion Source: Injected Conversion launched by software / Timer x Capture Compare x event / Timer x Trigger Out event / EXTI Line x
       - Rank x
-        - Channel: Channel x
-        - Sampling Time: x Cycles
+        - Channel: Channel x  -> ADC_JSQR.JSQx[4:0]
+        - Sampling Time: x Cycles  -> ADC_SMPRx.SMPx[2:0]
         - Injected Offset: x
     - WatchDog
       - Enable Analog WatchDog Mode: [ ]
   - NVIC Settings
   - DMA Settings
+    - DMA Request, Channel, Direction, Priority
+    - DMA Request Settings
+      - Mode: Normal / Circular
+      - Peripheral:
+        - Increment Address: [ ]
+        - Data Width: Half Word
+      - Memory:
+        - Increment Address: [x]
+        - Data Width: Half Word
   - GPIO Settings
 ```
 
@@ -287,9 +405,11 @@ Analog > ADCx > ADCx Mode and Configuration
 ```cpp
 HAL_StatusTypeDef HAL_ADCEx_Calibration_Start(ADC_HandleTypeDef* hadc);  // 执行内部自校准
 
-HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc, uint32_t Timeout);  // 轮询方式等待 ADC 转换完成
 HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef* hadc);  // 启动 ADC 规则通道 (regular channel) 转换
 HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef* hadc);  // 启动, 并使能转换完成 (EOC) 中断
+HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);  // ?
+
+HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc, uint32_t Timeout);  // 轮询方式等待 ADC 转换完成
 
 // ADC 规则组 (regular group) 转换完成回调函数
 // Start_IT 启动时, 为 EOC 中断回调;
