@@ -17,6 +17,11 @@ ln -s TARGET LINK_NAME # 创建 symlink
 pwd -P # 显示物理路径
 ```
 
+### 删除文件
+```bash
+find . -mindepth 1 -delete  # 删除当前目录内的所有内容，保留目录本身
+```
+
 ## 磁盘操作
 ### 磁盘空间
 ```bash

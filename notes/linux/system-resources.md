@@ -6,7 +6,8 @@ sudo apt install sysstat # mpstat, iostat, pidstat
 
 ## CPU
 ```bash
-mpstat -P ALL # CPU 各核心使用情况
+mpstat -P ALL 1  # 报告最近 1 秒内 CPU 各核心平均占用
+mpstat -P ALL  # 报告自系统启动以来 CPU 各核心平均占用
 htop # 各进程的 CPU 使用率
 ```
 
