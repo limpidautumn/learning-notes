@@ -44,3 +44,11 @@ git merge --abort  # 放弃合并
 git branch -d feat/foo
 git push origin --delete feat/foo
 ```
+
+## tag
+```bash
+git tag v1.0.0  # 创建 tag
+git push origin v1.0.0  # 推送到远程
+git tag -d v1.0.0  # 移除 tag
+git push origin --delete v1.0.0  # 移除远程 tag
+```
