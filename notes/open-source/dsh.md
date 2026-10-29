@@ -5,7 +5,7 @@
 ### 安装
 ```bash
 npm install -g @deepseek-ai/dsh
-
+mkdir -p ~/.config/systemd/user/
 vim ~/.config/systemd/user/dsh-web.service
 ```
 
@@ -22,9 +22,17 @@ Restart=on-failure
 RestartSec=5
 ```
 
+```bash
+systemctl --user daemon-reload
+```
+
 ## 插件
 
 ```bash
+# dsh-tui
+npm install -g @deepseek-harness-tui/dsh-tui
+# usage: dsh-tui
+
 # dsh-market / awesome-dsh-plugin
 dsh plugin --profile web add dshmarket
 
@@ -35,18 +43,9 @@ dsh plugin --profile web add dshmarket
 
 # --- Performance Improvement ---
 
-# dsh-routing-suite
-# https://github.com/yjh051108/dsh-routing-suite
-# 没有安装的好办法，只能一步一步走。
-
 # graph-memory
 
 # --- Personalization ---
-
-# whale-girl from dsh-market by vlln
-
-# skin-center
-dsh plugin --profile web add @linxin666/dsh-client-ui-skin-center
 
 # DeepSeek-Balance-Whale-Widget from dsh-market by MeteorNOX
 

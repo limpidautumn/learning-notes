@@ -11,13 +11,13 @@ sudo hostnamectl set-hostname my-hostname # 修改主机名
 #### 传统方法
 ```bash
 lsb_release -a # 查看版本
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup # 备份
+sudo cp /etc/apt/sources.list{,.bak} # 备份
 sudo vim /etc/apt/sources.list
 # deb https://mirrors.ustc.edu.cn/ubuntu/
 ```
 ### deb822 (Ubuntu 24.04+)
 ```bash
-sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak # 备份
+sudo cp /etc/apt/sources.list.d/ubuntu.sources{,.bak} # 备份
 
 sudo sed -i 's|http://archive.ubuntu.com/ubuntu|https://mirrors.ustc.edu.cn/ubuntu|g; s|http://security.ubuntu.com/ubuntu|https://mirrors.ustc.edu.cn/ubuntu|g' /etc/apt/sources.list.d/ubuntu.sources # 自动替换
 

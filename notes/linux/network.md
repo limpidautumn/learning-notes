@@ -80,6 +80,7 @@ sudo chmod 600 /etc/netplan/01-netcfg.yaml # 修改权限
 ```bash
 sudo netplan apply
 ```
+
 ### 其它方法
 - systemd-networkd
 - nmcli
