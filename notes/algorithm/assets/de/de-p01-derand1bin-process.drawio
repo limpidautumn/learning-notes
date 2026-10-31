@@ -1,0 +1,278 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="4SkCncd76Ig8x_idFquq">
+    <mxGraphModel dx="1704" dy="939" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=6;dashed=1;dashPattern=8 4 1 4;" value="" vertex="1">
+          <mxGeometry height="400" width="340" x="1140" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-61" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=5;dashed=1;dashPattern=8 4 1 4;" value="" vertex="1">
+          <mxGeometry height="400" width="540" x="560" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=5;dashed=1;dashPattern=8 4 1 4;" value="" vertex="1">
+          <mxGeometry height="400" width="420" x="100" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fontSize=16;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot;&gt;Target Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="580" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Population Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r2&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="120" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Population Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r3&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="320" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Third Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r1&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="120" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-101" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=oval;endFill=0;startArrow=oval;startFill=0;strokeColor=light-dark(#FF0000,#FF0000);dashed=1;" target="Iw_Yqnv999p1x4SpX34k-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-99" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=oval;endFill=0;startArrow=oval;startFill=0;strokeColor=light-dark(#FF0000,#FF0000);dashed=1;" target="Iw_Yqnv999p1x4SpX34k-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-96" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;dashed=1;strokeColor=light-dark(#FF0000,#FF0000);endArrow=oval;endFill=0;startArrow=oval;startFill=0;" target="Iw_Yqnv999p1x4SpX34k-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-97" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-93" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;dashed=1;strokeColor=light-dark(#FF0000,#FF0000);startArrow=oval;startFill=0;endArrow=oval;endFill=0;" target="nlPhdhQxCtwJu9nJcyN_-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-88" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="nlPhdhQxCtwJu9nJcyN_-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="140" />
+              <mxPoint x="330" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-87" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="nlPhdhQxCtwJu9nJcyN_-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="140" />
+              <mxPoint x="330" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-7" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="Iw_Yqnv999p1x4SpX34k-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="320" />
+              <mxPoint x="310" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-6" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="Iw_Yqnv999p1x4SpX34k-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="320" />
+              <mxPoint x="310" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot; face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot;&gt;Weighted Difference&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot; face=&quot;STIX Two Math&quot;&gt;F&lt;/font&gt;&lt;code&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&amp;nbsp;·&amp;nbsp;&lt;/font&gt;&lt;/code&gt;&lt;font style=&quot;font-size: 20px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot; face=&quot;STIX Two Math&quot;&gt;(&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r2&lt;/sub&gt;&amp;nbsp;- &lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r3&lt;/sub&gt;)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="280" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-90" edge="1" parent="1" source="nlPhdhQxCtwJu9nJcyN_-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="189.9038461538462" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nlPhdhQxCtwJu9nJcyN_-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;labelBorderColor=none;dashed=1;fillColor=none;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Ampl. Factor&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;F&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="120" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-80" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="Iw_Yqnv999p1x4SpX34k-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="460" />
+              <mxPoint x="540" y="460" />
+              <mxPoint x="540" y="20" />
+              <mxPoint x="810" y="20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; face=&quot;JetBrains Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Mutated Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot; face=&quot;STIX Two Math&quot;&gt;&lt;b&gt;v&lt;/b&gt;&lt;sub&gt;G+1,i&lt;/sub&gt;&amp;nbsp;= &lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r1&lt;/sub&gt;&amp;nbsp;+ F&lt;/font&gt;&lt;code&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&amp;nbsp;·&amp;nbsp;&lt;/font&gt;&lt;/code&gt;&lt;code&gt;&lt;font face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot; style=&quot;font-size: 20px;&quot;&gt;(&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r2&lt;/sub&gt;&amp;nbsp;-&amp;nbsp;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,r3&lt;/sub&gt;)&lt;/font&gt;&lt;/code&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="300" x="160" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Mutant Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;v&lt;/b&gt;&lt;sub&gt;G+1,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="740" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=6;" value="" vertex="1">
+          <mxGeometry height="280" width="140" x="580" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=6;" value="" vertex="1">
+          <mxGeometry height="280" width="140" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-49" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;dashed=1;endArrow=open;endFill=0;startArrow=none;startFill=0;strokeWidth=1;" target="Iw_Yqnv999p1x4SpX34k-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-56" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-49" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontColor,fontStyle,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;fontSize=12;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;" value="&lt;div&gt;(1-CR)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.6472" y="-1" as="geometry">
+            <mxPoint x="2" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-52" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;dashed=1;endArrow=open;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-57" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-52" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontColor,fontStyle,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;fontSize=12;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;" value="(1-CR)" vertex="1">
+          <mxGeometry relative="1" x="0.6633" y="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-53" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;dashed=1;endArrow=open;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-58" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-53" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontColor,fontStyle,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;fontSize=12;" value="(1-CR)" vertex="1">
+          <mxGeometry relative="1" x="0.6362" as="geometry">
+            <mxPoint x="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-50" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=open;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-59" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-50" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontColor,fontStyle,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontSize=12;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;" value="(CR)" vertex="1">
+          <mxGeometry relative="1" x="-0.08" y="1" as="geometry">
+            <mxPoint x="3" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-67" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=open;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-68" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-67" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontSize,fontColor,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;fontStyle=0;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;" value="&lt;font face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;rnbr(i) ✓&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0216" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-37" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Trial Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;u&lt;/b&gt;&lt;sub&gt;G+1,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="940" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-82" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="Iw_Yqnv999p1x4SpX34k-70">
+          <mxGeometry relative="1" x="-0.013" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="460" />
+              <mxPoint x="1120" y="460" />
+              <mxPoint x="1120" y="20" />
+              <mxPoint x="1390" y="20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-38" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=none;arcSize=6;" value="" vertex="1">
+          <mxGeometry height="280" width="140" x="940" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=25;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;" value="&lt;code&gt;⋮&lt;/code&gt;" vertex="1">
+          <mxGeometry height="20" width="30" x="635" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=25;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;" value="&lt;code&gt;⋮&lt;/code&gt;" vertex="1">
+          <mxGeometry height="20" width="30" x="795" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=25;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;" value="&lt;code&gt;⋮&lt;/code&gt;" vertex="1">
+          <mxGeometry height="20" width="30" x="995" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-65" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=open;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-66" connectable="0" parent="Iw_Yqnv999p1x4SpX34k-65" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];inheritText=fontColor,fontStyle,textOpacity,labelBorderColor,labelBorderWidth,labelBackgroundColor,defaultLabelBackgroundColor,labelPadding;defaultLabelBackgroundColor=page;fontFamily=STIX Two Math;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSTIX%2BTwo%2BMath;fontSize=12;labelPosition=center;verticalLabelPosition=top;labelPerimeter=1;" value="(CR)" vertex="1">
+          <mxGeometry relative="1" x="0.17" as="geometry">
+            <mxPoint x="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="750" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="590" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillStyle=cross-hatch;gradientColor=none;fillColor=light-dark(#000000,#FFFFFF);gradientDirection=radial;" value="" vertex="1">
+          <mxGeometry height="30" width="120" x="950" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-75" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=none;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-74">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="180" />
+              <mxPoint x="1310" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-69" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fontSize=16;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot;&gt;Target Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="1160" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-76" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;endArrow=none;endFill=0;" target="Iw_Yqnv999p1x4SpX34k-74">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1390" y="180" />
+              <mxPoint x="1310" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-70" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot; style=&quot;font-size: 16px;&quot;&gt;Trial Vector&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;u&lt;/b&gt;&lt;sub&gt;G+1,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="1320" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-71" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div&gt;&lt;font style=&quot;font-size: 16px;&quot; face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot;&gt;Next Generation&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot;&gt;&lt;b&gt;x&lt;/b&gt;&lt;sub&gt;G+1,i&lt;/sub&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="1230" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-77" edge="1" parent="1" source="Iw_Yqnv999p1x4SpX34k-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="Iw_Yqnv999p1x4SpX34k-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-74" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;fontSize=16;dashed=1;fillColor=none;" value="Select the better one" vertex="1">
+          <mxGeometry height="60" width="120" x="1250" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-93" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fontSize=14;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;dashed=1;strokeColor=light-dark(#FF0000,#FF0000);fillColor=none;fontColor=default;" value="&lt;div&gt;&lt;font face=&quot;STIX Two Math&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=STIX+Two+Math&quot; style=&quot;font-size: 16px;&quot;&gt;i, r1, r2, r3&lt;/font&gt;&lt;/div&gt;&lt;div&gt;are pairwise distinct.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="360" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-102" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;fontSize=28;fontStyle=0;labelBorderColor=none;" value="Mutation" vertex="1">
+          <mxGeometry height="40" width="420" x="100" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-103" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;fontSize=28;fontStyle=0" value="Crossover" vertex="1">
+          <mxGeometry height="40" width="540" x="560" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Iw_Yqnv999p1x4SpX34k-104" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;fontSize=28;fontStyle=0" value="Selection" vertex="1">
+          <mxGeometry height="40" width="320" x="1140" y="440" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

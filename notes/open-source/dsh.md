@@ -5,8 +5,7 @@
 ### 安装
 ```bash
 npm install -g @deepseek-ai/dsh
-mkdir -p ~/.config/systemd/user/
-vim ~/.config/systemd/user/dsh-web.service
+sudo vim /etc/systemd/system/dsh-web.service
 ```
 
 ```ini
@@ -17,13 +16,17 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=<USERNAME>
 ExecStart=/bin/bash -ic 'cd ~; exec dsh --profile web --no-open'
 Restart=on-failure
 RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 ```bash
-systemctl --user daemon-reload
+sudo systemctl daemon-reload
 ```
 
 ## 插件
@@ -55,6 +58,6 @@ dsh plugin --profile web add dshmarket
 ### API Key 验证 (DeepSeek)
 用于检查某个 DeepSeek API Key 是否有效。
 ```bash
-TOKEN="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-curl -fsS -H "Authorization: Bearer $TOKEN" https://api.deepseek.com/models
+DEEPSEEK_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+curl -fsS -H "Authorization: Bearer $DEEPSEEK_API_KEY" https://api.deepseek.com/models
 ```
