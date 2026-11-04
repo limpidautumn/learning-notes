@@ -51,7 +51,7 @@ $$
 更严谨地，令
 
 $$
-\Omega = \left\{ (r_1,r_2,r_3) \in \left( \{ 1,\dots,\text{NP} \} \setminus \{i\} \right)^3 \mid r_1 \neq r_2,\ r_2 \neq r_3,\ r_3 \neq r_1 \right\} \\[0.75em]
+\Omega = \left\lbrace (r_1,r_2,r_3) \in \left( \{ 1,\dots,\text{NP} \} \setminus \{i\} \right)^3 \mid r_1 \neq r_2,\ r_2 \neq r_3,\ r_3 \neq r_1 \right\rbrace \\
 (r_1,r_2,r_3) \sim \text{Uniform}(\Omega)
 $$
 
@@ -78,7 +78,7 @@ $$
 以及强制索引
 
 $$
-J_i \sim \text{Uniform}( \{ 1,\dots,D \} ) \\[0.75em]
+J_i \sim \text{Uniform}( \{ 1,\dots,D \} )
 $$
 
 然后构造
@@ -111,7 +111,5 @@ $$
 [^1]: Storn, Rainer & Price, Kenneth. (1995). Differential Evolution: A Simple and Efficient Adaptive Scheme for Global Optimization Over Continuous Spaces. Journal of Global Optimization. 23. [PDF - ResearchGate](https://www.researchgate.net/publication/246648860_Differential_Evolution_A_Simple_and_Efficient_Adaptive_Scheme_for_Global_Optimization_Over_Continuous_Spaces).
 
 [^2]: Storn, Rainer & Price, Kenneth. (1997). Differential Evolution - A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces. Journal of Global Optimization. 11. 341-359. 10.1023/A:1008202821328. [PDF - Metabolic economics](https://www.metabolic-economics.de/pages/seminar_theoretische_biologie_2007/literatur/schaber/Storn1997JGlobOpt11.pdf).
-
-## 脚注
 
 [^a]: 二项交叉，指对试验向量的每一个维度独立地进行随机选择。若不考虑强制维 $j = J_i$，那么 $D$ 个维度中取自变异向量的维数 $K$ 服从二项分布 $K \sim \text{Binomial}(D,\text{CR})$。

@@ -23,7 +23,7 @@ cmake -S . -B build  # 以当前目录为源码目录，配置到 build 目录
 cmake --build build  # 在 build 目录中执行构建
 ```
 
-### CML
+### CMakeLists.txt
 
 CMakeLists.txt 是 CMake 构建系统的配置文件，用于描述如何编译和链接项目。
 
@@ -129,6 +129,10 @@ Scope 明确命令需要写哪些属性。
 
 - 在 CMake 中，路径要么是绝对路径，要么是相对 `CMAKE_CURRENT_SOURCE_DIR` 的相对路径。
 - 目录作用域规则。
+
+### CMakePresets.json
+
+TODO.
 
 ## 格式化方法
 
