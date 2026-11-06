@@ -6,6 +6,8 @@
 
 参考资料：
 - [RM0008 - ST](https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [AN2834 - ST](https://www.st.com/resource/en/application_note/cd00211314-how-to-optimize-the-adc-accuracy-in-the-stm32-mcus-stmicroelectronics.pdf)
+- [DS5319 - ST](https://www.st.com/resource/en/datasheet/stm32f103c8.pdf)
 
 ## 基础信息
 - 12-bit ADC
@@ -194,7 +196,10 @@ $$
 通过输出电压反解温度：
 
 $$
-t=\frac{1430\,\mathrm{mV} - U(t)}{4.3\,\mathrm{mV}/^\circ\mathrm{C}} + 25\,{}^\circ\mathrm{C}
+\begin{aligned}
+t &= \frac{1430\,\mathrm{mV} - U(t)}{4.3\,\mathrm{mV}/^\circ\mathrm{C}} + 25\,{}^\circ\mathrm{C} \\
+t / \mathrm{m ^\circ C} &= 25000 + \frac{915200000 - 515625 \cdot D(t)}{2752}
+\end{aligned}
 $$
 
 采样时间 ≥ 17.1 μs.
@@ -220,7 +225,6 @@ $$
 > Refer to the Electrical characteristics section for the actual values of V<sub>25</sub> and Avg_Slope.
 > 
 > Note: The sensor has a startup time after waking from power down mode before it can output V<sub>SENSE</sub> at the correct level. The ADC also has a startup time after power-on, so to minimize the delay, the ADON and TSVREFE bits should be set at the same time.
-
 
 > **DS5319 Rev 20 §5.3.19 Temperature sensor characteristics**
 > 
