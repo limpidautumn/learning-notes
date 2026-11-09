@@ -47,6 +47,7 @@ git push origin --delete feat/foo
 
 ## tag
 ```bash
+git fetch --tags  # 获取远程所有 tag
 git tag v1.0.0  # 创建 tag
 git push origin v1.0.0  # 推送到远程
 git tag -d v1.0.0  # 移除 tag

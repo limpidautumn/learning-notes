@@ -22,3 +22,11 @@ Icon=/usr/local/STMicroelectronics/STM32Cube/STM32CubeMX/help/STM32CubeMX.png
 Terminal=false
 Categories=Development;
 ```
+
+## Bug
+
+记录我遇到的 STM32CubeMX 的 Bug。
+
+懒得报告了。在这里记一下，避免重复查手册确认。
+
+1. Version 6.18.1, STM32F103C8Tx, Timers > TIM2. Mode: Slave Mode = External Clock Mode 1, Trigger Source = TI1FP1. Configuration > Parameter Settings > Trigger > Trigger Polarity: Rising Edge, Falling Edge, Both Edges. The "Both Edges" option should not appear here. Testing reveals that only a single edge is captured.
