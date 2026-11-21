@@ -52,6 +52,7 @@ sudo mkdir -p /mnt/xxx # 创建挂载点
 
 # 挂载 ext4
 sudo mount /dev/sdX1 /mnt/xxx
+sudo mount -o ro /dev/sdX1 /mnt/xxx  # 只读挂载
 sudo chown -R $USER:$USER /mnt/xxx
 
 # 挂载 NTFS
