@@ -16,10 +16,42 @@
 
 如需对输入时钟进行 $n$ 分频 $(n \le 65536)$，则设置 预分频器(prescaler) 为 $n-1$。
 
-### 定时器更新中断
+### 更新事件 Update Event (UEV)
+
+TIMx_CR1.UDIS[1]=0 时，产生 UEV。
+
+触发路径:
+- 计数器 counter 溢出；
+- TIMx_CR1.URS[0]=1 时，软件置 TIMx_EGR.UG[0]=1；
+- (通用定时器 general-purpose timer) TIMx_CR1.URS[0]=1，从模式控制器 (slave mode controller) 工作在复位模式 (reset mode) 时，生成更新事件。
+
+> **RM0008 Rev 21 §17.4.5 TIM6 and TIM7 event generation register (TIMx_EGR)**
+> 
+> Bit 0 **UG**: Update generation
+> 
+> This bit can be set by software, it is automatically cleared by hardware.
+> 
+> 0: No action.  
+> 1: Re-initializes the timer counter and generates an update of the registers. Note that the prescaler counter is cleared too (but the prescaler ratio is not affected).
+
+### 定时器更新中断 Update Interrupt
+
+UEV 发生时，硬件置 TIMx_SR.UIF[0]=1。当 TIMx_DIER.UIE[0]=1 时，产生中断。
+
 如需每 $m$ 个脉冲触发一次中断 $(m \le 65536)$，则设置 自动重装载寄存器(TIMx_ARR) 为 $m-1$。
 
 计数器 CNT 的循环是：0,1,2,...,ARR
+
+> **RM0008 Rev 21 §17.4.4 TIM6 and TIM7 status register (TIMx_SR)**
+> 
+> Bit 0 **UIF**: Update interrupt flag
+> 
+> This bit is set by hardware on an update event. It is cleared by software.
+> 
+> 0: No update occurred.  
+> 1: Update interrupt pending. This bit is set by hardware when the registers are updated:  
+> \- At overflow or underflow and if UDIS = 0 in the TIMx_CR1 register.  
+> \- When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS = 0 and UDIS = 0 in the TIMx_CR1 register.
 
 ### 影子寄存器
 默认关闭。
