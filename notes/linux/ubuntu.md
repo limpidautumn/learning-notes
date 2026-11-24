@@ -1,11 +1,6 @@
 # Ubuntu
 
 ## 系统配置
-### 主机名
-```bash
-hostnamectl # 查看当前主机名
-sudo hostnamectl set-hostname my-hostname # 修改主机名
-```
 
 ### 下载源
 #### 传统方法
