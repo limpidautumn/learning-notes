@@ -2,14 +2,26 @@
 
 ## 配置
 
+### 安装
+
 [安装](https://get.docker.com/) | [Get started](https://docs.docker.com/get-started/)
 
 ```bash
 curl -fsSL https://get.docker.com | sudo sh
 ```
 
+> 如需代理，配置环境变量：
+> 
+> ```bash
+> curl -fsSL https://get.docker.com -o install-docker.sh
+> sudo https_proxy=http://127.0.0.1:40000 \
+>   http_proxy=http://127.0.0.1:40000 \
+>   no_proxy=localhost,127.0.0.1 \
+>   sh install-docker.sh
+> ```
+
 检查：
-```bash
+ash
 docker version
 ```
 
