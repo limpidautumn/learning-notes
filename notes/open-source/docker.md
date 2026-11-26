@@ -21,16 +21,49 @@ curl -fsSL https://get.docker.com | sudo sh
 > ```
 
 检查：
-ash
+
+```bash
 docker version
 ```
 
-若报错：`permission denied while ...`，运行：
+> 若报错：`permission denied while ...`，可选择启用 rootless 模式 (不推荐, 会导致配置文件混乱)。
+> 
+> 运行：
+> ```bash
+> # 将当前用户添加到 docker 组，以获得 Docker 守护进程的访问权限
+> sudo usermod -aG docker $USER
+> # 需要重新登录
+> docker version
+> ```
+> 
+> 或接受每次 `sudo` (推荐)。
+
+### 代理
+
+#### Docker Daemon 代理
+
+影响 docker pull / push 及 docker build 的 FROM 基础镜像拉取过程。不影响 docker build 的 apt 等工具。
+
+写 `/etc/systemd/system/docker.service.d/http-proxy.conf`：
+
+```ini
+[Service]
+Environment="HTTP_PROXY=http://127.0.0.1:7890"
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+Environment="NO_PROXY=localhost,127.0.0.1,::1"
+```
+
+重载并重启：
+
 ```bash
-# 将当前用户添加到 docker 组，以获得 Docker 守护进程的访问权限
-sudo usermod -aG docker $USER
-# 需要重新登录
-docker version
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+验证：
+
+```bash
+docker pull hello-world  # 观察能否拉取
 ```
 
 ## 镜像
@@ -85,7 +118,7 @@ docker cp CONTAINER:SRC_PATH DEST_PATH
 docker cp SRC_PATH CONTAINER:DEST_PATH
 ```
 
-### 数据卷
+## 数据卷
 ```bash
 docker volume ls
 docker inspect VOLUME
@@ -93,7 +126,7 @@ docker volume create VOLUME
 docker volume rm VOLUME
 ```
 
-### 清理
+## 清理
 ```bash
 docker system df # 查看 Docker 磁盘空间占用情况
 docker image prune -a # 清理未被容器使用的镜像
@@ -101,6 +134,10 @@ docker container prune # 清理已停止的容器
 docker volume prune # 清理未使用的卷
 docker builder prune -a # 清理构建缓存
 ```
+
+## 数据迁移
+
+见 [docker-data-migration](../../jottings/docker-data-migration.md)。
 
 ## 图形化界面
 
