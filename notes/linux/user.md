@@ -3,11 +3,21 @@
 ## 用户账号操作
 
 ### 创建用户
+
+注意区分 `adduser` 与 `useradd`。
+
 ```bash
-sudo useradd -m -s /bin/bash username # 同时创建家目录并指定登录 shell
+cat /etc/passwd  # 查看所有用户
+sudo useradd -m -s /bin/bash username  # 同时创建家目录并指定登录 shell
+
+# Debian / Ubuntu
+sudo adduser [--disabled-password] <user>  # 添加用户
 ```
 
 ### 添加/修改密码
+
+注意：`passwd` 在读密码时会暂时忽略 SIGINT。
+
 ```bash
 passwd # 修改本用户的密码
 sudo passwd <username> # 添加/修改目标用户的密码
@@ -28,14 +38,29 @@ sudo userdel -r john # 同时删除家目录及邮件池
 sudo grep -E '^%(sudo|wheel|admin)' /etc/sudoers
 ```
 
-### 赋予/收回 sudo 权限
-#### 添加到管理员组以授权
+若 `sudo` 命令或 `/etc/sudoers` 不存在，安装：
+
 ```bash
-sudo gpasswd -a <username> <groupname> # 添加到管理员组
-sudo gpasswd -d <username> <groupname> # 从管理员组移除
+# Debian
+apt update && apt install sudo
 ```
+
+### 调整用户组
+```bash
+sudo gpasswd -a <USER> <GROUP>  # add USER to GROUP
+sudo gpasswd -d <USER> <GROUP>  # remove USER from GROUP
+```
+
 重新登录生效。
-#### 在 sudoers 文件中授权
+
+### 赋予/收回 sudo 权限
+
+**A. 添加到管理员组以授权 (推荐)**
+
+略。
+
+**B. 在 sudoers 文件中授权**
+
 ```bash
 sudo visudo
 ```

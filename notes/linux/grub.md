@@ -33,6 +33,8 @@ GRUB_TERMINAL=console  # 禁用图形界面
 sudo update-grub  # 根据当前配置重新生成 GRUB 启动菜单配置文件
 ```
 
+高分辨率下，GRUB 菜单渲染非常慢，会很卡。此时建议禁用图形界面。
+
 ## 使用
 
 ```bash

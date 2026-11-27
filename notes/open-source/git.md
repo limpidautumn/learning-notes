@@ -17,6 +17,23 @@ Requirements: Follow the template and keep it as concise as possible. Omit secti
 Note: Refer to previous commit messages. There are new changes in the staging area; please review the modifications again.
 ```
 
+### Signing commits
+
+[Telling Git about your signing key - GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key) | [Signing commits - GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
+
+[Git Tools - Signing Your Work - Pro Git Book](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work)
+
+#### SSH
+
+```bash
+git config --global gpg.format ssh  # 使用 SSH 对提交和标签进行签名
+git config --global user.signingkey <public key path>  # 设置 SSH 签名密钥
+git commit -sS -m <commit message>
+```
+
+- `-s, --sign-off`: 在提交日志消息末尾添加一个 Signed-off-by 尾注。Add a Signed-off-by trailer by the committer at the end of the commit log message.
+- `-S[<keyid>], --gpg-sign[=<keyid>]`: 对提交进行 GPG 签名。GPG-sign commits.
+
 ## merge
 ```bash
 # 准备工作

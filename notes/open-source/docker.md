@@ -67,8 +67,35 @@ docker pull hello-world  # 观察能否拉取
 ```
 
 ## 镜像
+
+### 拉取
+
 ```bash
-docker pull debian:latest # 拉取镜像
+docker pull debian:latest
+```
+
+镜像源:
+- m.daocloud.io/docker.io by [上海道客网络科技有限公司](https://www.daocloud.io/) [docs](https://docs.daocloud.io/community/mirror/)
+
+Usage:
+
+```bash
+docker pull m.daocloud.io/docker.io/library/hello-world
+```
+
+### 构建
+
+```bash
+# 在当前目录构建镜像
+docker build -t [registry/]repository[:tag] .
+
+# 使用代理
+docker build --build-arg HTTP_PROXY=http://proxy.example.com:7890 --build-arg HTTPS_PROXY=... --build-arg ALL_PROXY=... --build-arg NO_PROXY=localhost,127.0.0.1,::1 .
+```
+
+### 操作
+
+```bash
 docker image ls # 查看本地已有的镜像
 docker image rm IMAGE # 删除镜像
 ```

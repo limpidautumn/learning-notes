@@ -106,6 +106,44 @@ lxd init --ui-initial-access-link
 > lxc auth identity create tls/lxd-ui-2 --group admins
 > ```
 
+### Proxy: core daemon
+Web UI 中，在 `ui/settings` 页面配置 `core.proxy_https` 即可。
+
+- 服务端配置更改: [How to configure the LXD server - Canonical](https://canonical.com/lxd/docs/default/howto/server_configure/)
+- 服务端配置项总览: [Core configuration - Server configuration - Canonical LXD](https://canonical.com/lxd/docs/default/server/#server-options-core)
+
+```bash
+# 配置 HTTP/HTTPS Proxy
+lxc config set core.proxy_http http://127.0.0.1:1080
+lxc config set core.proxy_https http://127.0.0.1:1080
+lxc config set core.proxy_ignore_hosts "localhost,127.0.0.1,::1"
+
+lxc config show | grep proxy  # 查看生效规则
+lxc config unset core.proxy_https  # 取消配置
+```
+
+> **关于 SOCKS5**
+> 
+> (写这一段时, LXD 版本 6.10.2)
+> 
+> 支持，但文档里没有。仅限 `socks5://`，不支持 `socks5h://`。
+> 
+> > 在 Go 中: "socks5" is treated the same as "socks5h".
+> > 
+> > [src/net/http/transport.go](https://github.com/golang/go/blob/master/src/net/http/transport.go) | [Commit c8e4f8c](https://github.com/golang/go/commit/c8e4f8c7756d67e27d2cfe4383cb90cf9f97d5a3)
+> 
+> [shared/proxy.go](https://github.com/canonical/lxd/blob/main/shared/proxy.go) | [Commit d9af620](https://github.com/canonical/lxd/commit/d9af6209e19f097459e24b1b6a23f231db043563)
+> 
+> 直接在 `core.proxy_http` / `core.proxy_https` 配置 `socks5://` 形式的地址即可。
+
+## 使用
+
+绝大部分操作都能在 Web UI 中完成。
+
+```bash
+lxc exec <instance> -- <command line>  # 在实例中执行命令
+lxc shell <instance>  # interactive
+```
 
 ## 杂项
 
@@ -135,3 +173,9 @@ zpool online -e <zpool> /dev/vg/lxdpool
 zpool list <zpool>
 lxc storage info <pool>
 ```
+
+**LXD 守护进程 SOCKS5 代理**
+
+镜像内容是 LXD 守护进程下载的。
+
+文档里没写，但是原生支持 SOCKS5 代理。
