@@ -1,8 +1,8 @@
 # hostnamectl
 
 ```bash
-hostnamectl # 查看当前主机名
-sudo hostnamectl set-hostname my-hostname # 修改主机名
+hostnamectl  # 查看当前主机名, 设备类型, 操作系统信息, 内核信息, CPU 架构, 以及硬件与固件信息
+sudo hostnamectl set-hostname my-hostname  # 修改主机名
 ```
 
 ## 常见问题
